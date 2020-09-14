@@ -22,8 +22,7 @@ public class Program
 		long biggestPolyndromeNumber = 0;
 		
 		var  biggestNumber = long.Parse(new StringBuilder().Append('9', maxDigit).ToString());
-		// example 99 (left) * i (right side of the product to find be found) 
-		
+				
 		for(var i = biggestNumber; i >= 100; i--)
 		{
 			// Step calculation and optimized to skip many combo is referenced on below website
