@@ -26,7 +26,7 @@ public class Program
 		
 		for(var i = biggestNumber; i >= 100; i--)
 		{
-			// Step calculation and optimzed to skip many combo is referenced on below website
+			// Step calculation and optimized to skip many combo is referenced on below website
 			// Ref: https://iq.opengenus.org/largest-palindrome-from-product-of-two-3-digit-numbers/
 			var step = 1;
 			long j = 1;
