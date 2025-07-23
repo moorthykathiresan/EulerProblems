@@ -102,7 +102,6 @@ class Result
             if(i == str1.Length - 1
                 && str1.Substring(0, str1.Length-1).Equals(str2))
             {
-                
                 diff.Index = i;
                 diff.Char = str1[i];
             }
@@ -116,10 +115,7 @@ class Result
                         diff.Index = i;
                         diff.Char = str1[i];
                     }
-                    else
-                    {
-                        break;
-                    }
+                    break;
                 }
             }
         }
@@ -146,6 +142,7 @@ class Result
     public static List<int> getRemovableIndices(string str1, string str2)
     {
         var result = new List<int>();
+        
         var diff = GetDIFF_VALUES(str1, str2);   
         
         if(diff.Index == -1)
