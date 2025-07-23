@@ -110,10 +110,8 @@ class Result
             {
                 if(!str1[i].Equals(str2[i]))
                 {
-                    var sub1 = str1.Substring(0, i);
-                    var sub2 = str1.Substring(i+1, str1.Length - (i+1));
-                    
-                    if((sub1+sub2).Equals(str2))
+                    var sub1 = str1.Remove(i, 1);
+                    if((sub1).Equals(str2))
                     {
                         diff.Index = i;
                         diff.Char = str1[i];
