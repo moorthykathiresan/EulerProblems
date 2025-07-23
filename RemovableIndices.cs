@@ -58,20 +58,6 @@ Explanation 1
 There is no way to make str1 equal to str2 by removing any 1 character.
 */
 
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Collections;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Text.RegularExpressions;
-using System.Text;
-using System;
-
 class Result
 {
 
@@ -139,6 +125,20 @@ class Result
         return diffIndex;
     }
     
+    public static List<int> GetResults(int diffStart, int diffIndex)
+    {
+        var result = new List<int>();
+        // No duplicate        
+        if(diffStart == diffIndex)
+        {
+            result.Add(diffStart);
+            return result;
+        }
+
+        result.AddRange(Enumerable.Range(diffStart, diffIndex-diffStart+1));
+        return result;
+    }
+    
     public static List<int> getRemovableIndices(string str1, string str2)
     {
         var result = new List<int>();
@@ -151,15 +151,10 @@ class Result
             return result;
         }
                 
-        var diffStart = FindDiffStart(str1, diff.Index, diff.Char);        
-        // No duplicate        
-        if(diffStart == diff.Index)
-        {
-            result.Add(diffStart);
-            return result;
-        }
-
-        result.AddRange(Enumerable.Range(diffStart, diff.Index-diffStart+1));
+        var diffStart = FindDiffStart(str1, diff.Index, diff.Char);
+        
+        result = GetResults(diffStart, diff.Index);
+        
         return result;
     }
 }
@@ -177,3 +172,4 @@ class Solution
         Console.WriteLine(String.Join("\n", result));
     }
 }
+
